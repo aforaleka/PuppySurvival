@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{AC0C8AC1-10CB-35E0-3208-2EBAC86E6AFE}") = "PuppySurvival", "Assembly-CSharp.csproj", "{FE767462-F870-08E2-1A1B-29C0706BA6D1}"
+EndProject
+Project("{AC0C8AC1-10CB-35E0-3208-2EBAC86E6AFE}") = "PuppySurvival", "Assembly-CSharp-Editor.csproj", "{5F92D492-FB17-FC87-ADB4-CE6EDC145078}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE767462-F870-08E2-1A1B-29C0706BA6D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE767462-F870-08E2-1A1B-29C0706BA6D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE767462-F870-08E2-1A1B-29C0706BA6D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE767462-F870-08E2-1A1B-29C0706BA6D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F92D492-FB17-FC87-ADB4-CE6EDC145078}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F92D492-FB17-FC87-ADB4-CE6EDC145078}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F92D492-FB17-FC87-ADB4-CE6EDC145078}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F92D492-FB17-FC87-ADB4-CE6EDC145078}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
