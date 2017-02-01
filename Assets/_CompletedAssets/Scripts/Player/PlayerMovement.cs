@@ -4,7 +4,10 @@ namespace CompleteProject
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public float speed = 4f;            // The speed that the player will move at.
+		public float walkSpeed = 2f;
+		public float runSpeed = 6f;
+		public float slowSpeed = 1.0f;
+		float speed; // The speed that the player will move at.
 
         Vector3 movement;                   // The vector to store the direction of the player's movement.
         Animator anim;                      // Reference to the animator component.
@@ -20,6 +23,7 @@ namespace CompleteProject
             // Set up references.
             anim = GetComponent <Animator> ();
             playerRigidbody = GetComponent <Rigidbody> ();
+			speed = walkSpeed;
         }
 
 
@@ -27,6 +31,8 @@ namespace CompleteProject
         {
             // Store the input axes.
             float v = Input.GetAxisRaw("Vertical");
+
+			SetSpeed ();
 
             // Move the player around the scene.
             Move ();
@@ -38,6 +44,16 @@ namespace CompleteProject
             Animating (v);
         }
 
+		void SetSpeed ()
+		{
+			if (Input.GetKey (KeyCode.LeftShift))
+				speed = runSpeed;
+			else if (Input.GetKey (KeyCode.Q))
+				speed = slowSpeed;
+			
+			if (Input.GetKeyUp (KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.Q))
+				speed = walkSpeed;
+		}
 
         void Move ()
         {
