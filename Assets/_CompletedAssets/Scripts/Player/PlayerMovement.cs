@@ -32,6 +32,7 @@ namespace CompleteProject
             // Store the input axes.
             float v = Input.GetAxisRaw("Vertical");
 
+			// Set the speed according to the keys currently pressed down
 			SetSpeed ();
 
             // Move the player around the scene.
@@ -46,8 +47,10 @@ namespace CompleteProject
 
 		void SetSpeed ()
 		{
+			// Speed up to running speed
 			if (Input.GetKey (KeyCode.LeftShift))
 				speed = runSpeed;
+			// Or slow down to tip-toeing
 			else if (Input.GetKey (KeyCode.Q))
 				speed = slowSpeed;
 			
@@ -57,9 +60,11 @@ namespace CompleteProject
 
         void Move ()
         {
+			// Go forward
 			if (Input.GetKey(KeyCode.W)) {
 				transform.position += transform.forward * Time.deltaTime * speed;
 			}
+			// Go backward
 			else if(Input.GetKey(KeyCode.S)) {
 				transform.position -= transform.forward * Time.deltaTime * speed;
 			}
