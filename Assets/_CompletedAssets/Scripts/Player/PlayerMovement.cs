@@ -18,7 +18,7 @@ namespace CompleteProject
         void Awake ()
         {
             // Create a layer mask for the floor layer.
-            floorMask = LayerMask.GetMask ("Floor");
+            // floorMask = LayerMask.GetMask ("Floor");
 
             // Set up references.
             anim = GetComponent <Animator> ();
@@ -95,6 +95,8 @@ namespace CompleteProject
 				playerRigidbody.MoveRotation (Quaternion.Lerp(transform.rotation, newRotatation, 0.1f));
             }
         }
+
+
 
 
         void Animating (float v)
