@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: PlanksMaterial
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _LIGHTMAPPING_DYNAMIC_LIGHTMAPS _LIGHTMAPPING_REALTIME _NORMALMAP
     _SPECGLOSSMAP _UVSEC_UV1
   m_LightmapFlags: 5
@@ -16,6 +16,42 @@ Material:
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
+    - first:
+        name: _BloodBaseColor
+      second:
+        m_Texture: {fileID: 2800000, guid: d448ea0a0f0d78540a2ac67ec4d5379a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _BloodDissolve
+      second:
+        m_Texture: {fileID: 2800000, guid: 6d5922d8e587b454eaf7d8008d5c3714, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _BloodFlowBump
+      second:
+        m_Texture: {fileID: 2800000, guid: ee9920021a95396439b3c9114e19c931, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _BloodMask
+      second:
+        m_Texture: {fileID: 2800000, guid: 38854b35c209b4244b0b7ae5a45fd712, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _BloodMetallic
+      second:
+        m_Texture: {fileID: 2800000, guid: 6c60c509a339c844a9cf76eec4dab7ca, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _BloodNormal
+      second:
+        m_Texture: {fileID: 2800000, guid: ee9920021a95396439b3c9114e19c931, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - first:
         name: _BumpMap
       second:
@@ -53,6 +89,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
+        name: _Metallic
+      second:
+        m_Texture: {fileID: 2800000, guid: 3adb6b8b842e06c49850f56df61cb2c3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
         name: _MetallicGlossMap
       second:
         m_Texture: {fileID: 0}
@@ -86,6 +128,9 @@ Material:
     - first:
         name: _AlphaTestRef
       second: 0.5
+    - first:
+        name: _BloodAmount
+      second: 1
     - first:
         name: _BumpScale
       second: 0.85
@@ -146,6 +191,9 @@ Material:
     m_Colors:
     - first:
         name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _Color_Multi
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _EmissionColor

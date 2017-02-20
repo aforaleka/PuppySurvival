@@ -45,16 +45,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\EmptyClass.cs" />
-     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
-     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
-     <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
-     <Compile Include="Assets\Scripts\Managers\EnemyManager.cs" />
-     <Compile Include="Assets\Scripts\Managers\GameOverManager.cs" />
-     <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerShooting.cs" />
+     <Compile Include="Assets\Scripts\ButtonClick.cs" />
+     <Compile Include="Assets\Scripts\MaterialChange.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\play_anim_on_ui_button.cs" />
+     <Compile Include="Assets\Scripts\test_mera_ch.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\TutorialInfo.cs" />
      <Compile Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Scripts\BloomOptimized.cs" />
      <Compile Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Scripts\ColorCorrectionCurves.cs" />
@@ -70,19 +65,26 @@
      <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\Door.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\RandomAnimationPoint.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\RandomParticlePoint.cs" />
+     <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\SpawnController.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\VolumeHandler.cs" />
+     <Compile Include="Assets\_CompletedAssets\Scripts\Keys\KeyCount.cs" />
+     <Compile Include="Assets\_CompletedAssets\Scripts\Keys\keyCollision.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Managers\EnemyManager.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Managers\GameOverManager.cs" />
+     <Compile Include="Assets\_CompletedAssets\Scripts\Managers\KeyManager.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Managers\PauseManager.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Managers\ScoreManager.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Player\PlayerMovement.cs" />
-     <Compile Include="Assets\_CompletedAssets\Scripts\Player\PlayerShooting.cs" />
+     <Compile Include="Assets\script.cs" />
+     <Compile Include="Assets\script1.cs" />
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
      <None Include="Assets\TutorialInfo\Fonts\LICENSE.txt" />
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
+     <None Include="Assets\Resource\Shader\DiffuseWrap.shader" />
+     <None Include="Assets\Models\Key\readME keys.txt" />
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\SSAOShader.shader" />
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />

@@ -53,6 +53,8 @@
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
      <None Include="Assets\TutorialInfo\Fonts\LICENSE.txt" />
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
+     <None Include="Assets\Resource\Shader\DiffuseWrap.shader" />
+     <None Include="Assets\Models\Key\readME keys.txt" />
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\SSAOShader.shader" />
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
      <None Include="Assets\_CompletedAssets\SampleAssets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />

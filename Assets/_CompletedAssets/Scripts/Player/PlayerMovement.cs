@@ -5,29 +5,27 @@ namespace CompleteProject
     public class PlayerMovement : MonoBehaviour
     {
 		public float walkSpeed = 2f;
-		public float runSpeed = 5f;
-		public float slowSpeed = 1.0f;
+		public float runSpeed = 6f;
+		public float slowSpeed = 1f;
+		public float deadzone = 5f;
 		float speed; // The speed that the player will move at.
 
 		Vector3 new_position;
         Vector3 movement;                   // The vector to store the direction of the player's movement.
-        Animator anim;                      // Reference to the animator component.
         Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
         float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 
-		string state;
-		string idle = "idle";
-		string walk = "walk";
-		string run = "run";
-		string tiptoe = "tiptoe";
+		internal string state;
+		internal string idle = "idle";
+		internal string walk = "walk";
+		internal string run = "run";
+		internal string tiptoe = "tiptoe";
 
         void Awake ()
         {
             // Set up references.
-            anim = GetComponent <Animator> ();
             playerRigidbody = GetComponent <Rigidbody> ();
 			speed = walkSpeed;
-
         }
 
 
@@ -45,9 +43,6 @@ namespace CompleteProject
 
             // Turn the player to face the mouse cursor.
             Turning ();
-
-            // Animate the player.
-			Animating (state == walk);
         }
 
 		void SetSpeed ()
@@ -58,9 +53,7 @@ namespace CompleteProject
 			} else if (Input.GetKey (KeyCode.Q)) {
 				speed = slowSpeed;
 				state = tiptoe;
-			} 
-
-			if (Input.GetKeyUp (KeyCode.LeftShift) || Input.GetKeyUp (KeyCode.Q)) {
+			} else {
 				speed = walkSpeed;
 				state = walk;
 			}
@@ -96,27 +89,20 @@ namespace CompleteProject
             RaycastHit floorHit;
 
             // Perform the raycast
-			if(Physics.Raycast (camRay, out floorHit, Mathf.Infinity))
+			if(Physics.Raycast (camRay, out floorHit, camRayLength))
             {
                 // Create a vector from the player to the point on the floor the raycast from the mouse hit.
                 Vector3 playerToMouse = floorHit.point - transform.position;
 
                 // Ensure the vector is entirely along the floor plane.
-				 playerToMouse.y = 0.0f;
+				playerToMouse.y = 0.0f;
 
                 // Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
                 Quaternion newRotatation = Quaternion.LookRotation (playerToMouse);
-
                 // Set the player's rotation to this new rotation.
-				playerRigidbody.MoveRotation (Quaternion.Lerp(transform.rotation, newRotatation, speed/100f));
+				if (Quaternion.Angle(transform.rotation, newRotatation) > deadzone)
+					playerRigidbody.MoveRotation (Quaternion.Lerp(transform.rotation, newRotatation, speed/100f));
             }
-        }
-			
-
-        void Animating (bool walk)
-        {
-            // Tell the animator whether or not the player is walking.
-            anim.SetBool ("IsWalking", walk);
         }
     }
 }
