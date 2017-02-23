@@ -62,6 +62,8 @@
      <Compile Include="Assets\_CompletedAssets\Scripts\Enemy\EnemyAttack.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Enemy\EnemyHealth.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Enemy\EnemyMovement.cs" />
+     <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\BaitCollision.cs" />
+     <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\BaitCount.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\Door.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\RandomAnimationPoint.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\RandomParticlePoint.cs" />
@@ -71,9 +73,9 @@
      <Compile Include="Assets\_CompletedAssets\Scripts\Keys\keyCollision.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Managers\EnemyManager.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Managers\GameOverManager.cs" />
-     <Compile Include="Assets\_CompletedAssets\Scripts\Managers\KeyManager.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Managers\PauseManager.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Managers\ScoreManager.cs" />
+     <Compile Include="Assets\_CompletedAssets\Scripts\Managers\SpawnManager.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\script.cs" />

@@ -38,7 +38,6 @@ public class SpawnController : MonoBehaviour
 	public static Vector3 FindFreeLocation(float radius)
 	{
 		Vector3 point = new Vector3 (Random.Range (XMin, XMax), 0, Random.Range (ZMin, ZMax));
-
 		while (Physics.OverlapSphere (point, radius, floorMask).Length > 0)
 			point = new Vector3 (Random.Range (XMin, XMax), 0, Random.Range (ZMin, ZMax));
 		return point;

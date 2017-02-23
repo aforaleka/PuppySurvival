@@ -5,12 +5,10 @@ public class Door : MonoBehaviour {
 
 	bool hasKey;
 
-	// Use this for initialization
 	void Start () {
 		hasKey = false;
 	}
-
-	// Update is called once per frame
+		
 	void Update () {
 		hasKey = KeyCount.count > 0;
 	}
@@ -28,7 +26,7 @@ public class Door : MonoBehaviour {
 		else
 		{
 			Destroy (other.gameObject);
+			gameObject.GetComponent<BoxCollider> ().isTrigger = false;
 		}
-		//ScoreManager.score += 100;
 	}
 }

@@ -14,11 +14,12 @@ public class keyCollision : MonoBehaviour {
 
 	internal void OnCollisionEnter(Collision other)
 	{
-		if (other.gameObject.tag == "Player")
-		{
+		if (other.gameObject.tag == "Player") {
 			Destroy(gameObject);
 			KeyCount.count += 1;
 			ScoreManager.score += 100;
+		} else if (other.gameObject.tag != "Enemy") {
+			transform.position = SpawnController.FindFreeLocation (5f);
 		}
 	}
 }

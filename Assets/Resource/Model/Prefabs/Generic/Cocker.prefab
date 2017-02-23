@@ -55,10 +55,8 @@ GameObject:
   - 4: {fileID: 407844}
   - 95: {fileID: 9516784}
   - 54: {fileID: 5428614}
-  - 114: {fileID: 11411250}
   - 114: {fileID: 114000011205940188}
   - 114: {fileID: 114000013268247284}
-  - 114: {fileID: 114000010475470990}
   - 195: {fileID: 195000011958768424}
   - 136: {fileID: 136000012654423100}
   - 135: {fileID: 135000012946322530}
@@ -796,19 +794,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11411250
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117616}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 012df26e1148bef40ae82791a71b43df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 9500000, guid: a8022d034ff417f4da5297c347a5afb3, type: 3}
-  rbody: {fileID: 5428614}
 --- !u!114 &11480990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -900,21 +885,6 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 117616}
   m_IsPrefabParent: 1
---- !u!114 &114000010475470990
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa10cc87aff30c04dbe0aa648f5b6adc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 100
-  currentHealth: 0
-  sinkSpeed: 2.5
-  scoreValue: 10
 --- !u!114 &114000011205940188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -927,7 +897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 5
-  attackDamage: 10
+  attackDamage: 50
 --- !u!114 &114000013268247284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -950,7 +920,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136000012654423100
 CapsuleCollider:
@@ -961,7 +931,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -972,16 +942,16 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117616}
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
