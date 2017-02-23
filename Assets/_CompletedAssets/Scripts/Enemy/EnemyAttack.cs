@@ -76,6 +76,7 @@ public class EnemyAttack : MonoBehaviour
 			} else if (playerHealth.currentHealth > 0) {
 				// TODO: ADD ATTACK SOUND
 				playerHealth.TakeDamage (attackDamage);
+				nav.Stop ();
 			}
 		}
     }
