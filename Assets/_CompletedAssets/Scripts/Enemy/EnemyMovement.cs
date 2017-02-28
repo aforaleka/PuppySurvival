@@ -14,6 +14,8 @@ public class EnemyMovement : MonoBehaviour
 	Vector3 dest;
 	float speed;
 
+	public AudioClip bark; 
+	AudioSource enemyAudio;
 
     void Awake ()
     {
@@ -26,6 +28,7 @@ public class EnemyMovement : MonoBehaviour
 		walking = false;
 		speed = nav.speed;
 		Running (false);
+		enemyAudio = GetComponent<AudioSource> ();
 
     }
 
@@ -37,15 +40,28 @@ public class EnemyMovement : MonoBehaviour
         {
 			if (!anim.GetBool("IsEating")) {
 				nav.speed = speed;
-				bool playerInRange = Vector3.Distance (nav.transform.position, player.position) < minDistance;
+
+				// running makes you more noticeable (louder)
+				string running = player.GetComponent<PlayerMovement> ().run;
+				bool playerInRange = player.GetComponent<PlayerMovement> ().state == running
+					? Vector3.Distance (nav.transform.position, player.position) < (minDistance * 1.4f)
+					: Vector3.Distance (nav.transform.position, player.position) < minDistance;
+
+				// but if you're tiptoeing/ not moving you're fine
 				string tiptoe = player.GetComponent<PlayerMovement> ().tiptoe;
-				bool playerTiptoe = player.GetComponent<PlayerMovement> ().state == tiptoe;
+				string idle = player.GetComponent<PlayerMovement> ().idle;
+				bool playerTiptoe = 
+					player.GetComponent<PlayerMovement> ().state == tiptoe ||
+					player.GetComponent<PlayerMovement> ().state == idle;
 
 				if (!playerSpotted)
 					playerSpotted = playerInRange && !playerTiptoe;
 
 				if (playerSpotted && playerInRange) {
-					// TODO: ADD BARKING SOUND
+					enemyAudio.clip = bark;
+					enemyAudio.loop = true;
+					enemyAudio.volume = 1.0f;
+					if (!enemyAudio.isPlaying) enemyAudio.Play ();
 					Running (true);
 					nav.SetDestination (player.position);
 
@@ -55,16 +71,18 @@ public class EnemyMovement : MonoBehaviour
 				}
 
 				if (!anim.GetBool ("IsRunning")) {
-					// TODO: STOP BARKING
+					enemyAudio.Stop();
 					if (!walking) {
-						dest = SpawnController.FindFreeLocation (2f);
+						dest = SpawnController.WhichRoom (player.position) == 1
+							? SpawnController.FindFreeLocationRoom1 (4f)
+							: SpawnController.FindFreeLocationRoom2 (4f);
 						walking = true;
 					}
 
 					nav.SetDestination (dest);
 					CasuallyWalking ();
 
-					if (Vector3.Distance (dest, nav.transform.position) < 0.5f) {
+					if (Vector3.Distance (dest, nav.transform.position) < 1f) {
 						walking = false;
 					}
 				}

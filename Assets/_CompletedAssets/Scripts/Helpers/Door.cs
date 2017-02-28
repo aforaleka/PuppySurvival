@@ -18,6 +18,7 @@ public class Door : MonoBehaviour {
 		if (other.gameObject.tag == "Player")
 		{
 			if (hasKey) {
+				Debug.Log ("hi");
 				gameObject.GetComponent<BoxCollider> ().isTrigger = true;
 				KeyCount.count -= 1;
 				ScoreManager.score += 1000;
@@ -25,8 +26,8 @@ public class Door : MonoBehaviour {
 		}
 		else
 		{
-			Destroy (other.gameObject);
-			gameObject.GetComponent<BoxCollider> ().isTrigger = false;
+			//Destroy (other.gameObject);
+			//gameObject.GetComponent<BoxCollider> ().isTrigger = false;
 		}
 	}
 }

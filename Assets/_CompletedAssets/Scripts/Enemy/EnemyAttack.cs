@@ -15,6 +15,10 @@ public class EnemyAttack : MonoBehaviour
 
 	NavMeshAgent nav;               // Reference to the nav mesh agent.
 
+	public AudioClip eating; 
+	public AudioClip attack; 
+	AudioSource enemyAudio;
+
     void Awake ()
     {
         // Setting up the references.
@@ -24,6 +28,7 @@ public class EnemyAttack : MonoBehaviour
 		isEating = false;
 		anim.SetBool ("IsEating", false);
 		nav = GetComponent <NavMeshAgent> ();
+		enemyAudio = GetComponent<AudioSource> ();
     }
 
     void OnTriggerEnter (Collider other)
@@ -45,7 +50,7 @@ public class EnemyAttack : MonoBehaviour
         timer += Time.deltaTime;
 
 		if (timer >= timeBetweenAttacks) {
-			nav.Resume ();
+			if (nav.enabled) nav.Resume ();
 			isEating = false;
 			anim.SetBool ("IsEating", false);
 
@@ -66,7 +71,9 @@ public class EnemyAttack : MonoBehaviour
 		if (!isEating) {
 			timer = 0f;
 			if (BaitCount.count > 0) {
-				// TODO: ADD EATING SOUND
+				enemyAudio.clip = eating;
+				enemyAudio.volume = 0.5f;
+				enemyAudio.Play ();
 				BaitCount.count -= 1;
 				isEating = true;
 				anim.SetBool ("IsWalking", false);
@@ -74,7 +81,8 @@ public class EnemyAttack : MonoBehaviour
 				anim.SetBool ("IsEating", true);
 				nav.Stop ();
 			} else if (playerHealth.currentHealth > 0) {
-				// TODO: ADD ATTACK SOUND
+				enemyAudio.clip = attack;
+				enemyAudio.PlayOneShot (attack, 1);
 				playerHealth.TakeDamage (attackDamage);
 				nav.Stop ();
 			}

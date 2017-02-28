@@ -5,7 +5,6 @@ public class PlayerMovement : MonoBehaviour
 	public float walkSpeed = 3f;
 	public float runSpeed = 6f;
 	public float slowSpeed = 1f;
-	public float deadzone = 5f;
 	float speed; // The speed that the player will move at.
 
 	Vector3 new_position;
@@ -100,7 +99,6 @@ public class PlayerMovement : MonoBehaviour
 			float angle = Quaternion.Angle (transform.rotation, newRotatation);
 
             // Set the player's rotation to this new rotation.
-			//if (angle > deadzone)
 			playerRigidbody.MoveRotation (Quaternion.Lerp(transform.rotation, newRotatation, angle/20 * speed/80f));
         }
     }

@@ -20,4 +20,6 @@ public class KeyCount : MonoBehaviour {
     {
         countText.text = "Keys: " + count.ToString();
     }
+		
+
 }

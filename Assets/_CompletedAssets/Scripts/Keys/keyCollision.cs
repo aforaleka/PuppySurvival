@@ -3,23 +3,29 @@ using System.Collections;
 
 public class keyCollision : MonoBehaviour {
 
-	// Use this for initialization
+	public AudioClip getItem;
+	float clipDuration;
+	AudioSource audio;
+	Renderer keyRenderer;
+
 	void Start () {
+		audio = GetComponent <AudioSource> ();
+		keyRenderer = GetComponent<MeshRenderer> ();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		transform.Rotate(Vector3.up, 3f);
 	}
 
-	internal void OnCollisionEnter(Collision other)
+	internal void OnTriggerEnter (Collider other)
 	{
 		if (other.gameObject.tag == "Player") {
-			Destroy(gameObject);
 			KeyCount.count += 1;
+			audio.PlayOneShot (getItem, 1);
+			keyRenderer.enabled = false;
 			ScoreManager.score += 100;
-		} else if (other.gameObject.tag != "Enemy") {
-			transform.position = SpawnController.FindFreeLocation (5f);
+			Destroy(gameObject, getItem.length);
+
 		}
 	}
 }

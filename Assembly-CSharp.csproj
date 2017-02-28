@@ -67,6 +67,7 @@
      <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\Door.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\RandomAnimationPoint.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\RandomParticlePoint.cs" />
+     <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\SoundController.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\SpawnController.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Helpers\VolumeHandler.cs" />
      <Compile Include="Assets\_CompletedAssets\Scripts\Keys\KeyCount.cs" />
