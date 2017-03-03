@@ -18,11 +18,17 @@ public class PlayerMovement : MonoBehaviour
 	internal string run = "run";
 	internal string tiptoe = "tiptoe";
 
+	AudioSource audio;
+	public AudioClip walkforward;
+	public AudioClip walkbackward;
+	public AudioClip runforward;
+
     void Awake ()
     {
         // Set up references.
         playerRigidbody = GetComponent <Rigidbody> ();
 		speed = walkSpeed;
+		audio = GetComponent<AudioSource> ();
     }
 
 
@@ -47,12 +53,18 @@ public class PlayerMovement : MonoBehaviour
 		if (Input.GetKey (KeyCode.LeftShift)) {
 			speed = runSpeed;
 			state = run;
+			audio.clip = runforward;
+			audio.volume = 0.4f;
 		} else if (Input.GetKey (KeyCode.Q)) {
 			speed = slowSpeed;
 			state = tiptoe;
+			audio.volume = 0.1f;
+			audio.clip = walkforward;
 		} else {
 			speed = walkSpeed;
 			state = walk;
+			audio.volume = 0.2f;
+			audio.clip = walkbackward;
 		}
 		
 	}
@@ -63,16 +75,29 @@ public class PlayerMovement : MonoBehaviour
 
 		if (Input.GetKey(KeyCode.W)) { 
 			delta += transform.forward;
+
+			if (!audio.isPlaying)
+				audio.Play ();
 		}  else if (Input.GetKey(KeyCode.S)) {
 			delta -= transform.forward;
+
+			if (!audio.isPlaying)
+				audio.Play ();
 		}
 
 		if (Input.GetKey(KeyCode.D)) {
 			delta += transform.right;
+			if (!audio.isPlaying)
+				audio.Play ();
 		} else if (Input.GetKey(KeyCode.A)) {
 			delta -= transform.right;
+			if (!audio.isPlaying)
+				audio.Play ();
 		}
 
+		if (!Input.anyKey)
+			audio.Stop ();
+		
 		playerRigidbody.MovePosition(playerRigidbody.position + delta * Time.deltaTime * speed);
     }
 

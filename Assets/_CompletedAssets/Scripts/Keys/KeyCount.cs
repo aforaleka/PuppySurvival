@@ -4,22 +4,46 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class KeyCount : MonoBehaviour {
-    internal static int count;
-    public Text countText;
+	public static int count;
+	public int prevCount;
+	public Text countText;
+
+	public float flashSpeed = 0.5f;
+	public Color flashColourGreen;
+
+	public float timer;
+	public float timeInBetween = 0.2f;
 
 	void Start () {
-        count = 0;
-        SetCountText();
-    }
+		prevCount = 0;
+		count = 0;
+		timer = timeInBetween;
+		SetCountText();
+	}
+		
+	void FixedUpdate () {
+		SetCountText();
+		timer += Time.fixedDeltaTime;
 
-	void Update () {
-        SetCountText();
+		if (timer >= timeInBetween)
+		{
+			// ... transition the colour back to clear.
+			countText.color =  Color.Lerp(countText.color, new Color(1f, 1f, 1f, 1), flashSpeed * Time.fixedDeltaTime);
+		}
+
+		// If the player has just been damaged...
+		if (prevCount < count)
+		{
+			// ... set the colour of the damageImage to the flash colour.
+			countText.color = flashColourGreen;
+			timer = 0;
+		}
+
+		prevCount = count;
 	}
 
-    void SetCountText()
-    {
-        countText.text = "Keys: " + count.ToString();
-    }
-		
-
+	void SetCountText()
+	{
+		countText.text = "Key: " + count.ToString();
+	}
 }

@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 public class EnemyMovement : MonoBehaviour
 {
     Transform player;               // Reference to the player's position.
     PlayerHealth playerHealth;      // Reference to the player's health.
-    NavMeshAgent nav;               // Reference to the nav mesh agent.
+	UnityEngine.AI.NavMeshAgent nav;               // Reference to the nav mesh agent.
 	public float minDistance = 8f;
 	bool playerSpotted;
 	Animator anim;                      // Reference to the animator component.
@@ -22,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
         // Set up the references.
         player = GameObject.FindGameObjectWithTag ("Player").transform;
         playerHealth = player.GetComponent <PlayerHealth> ();
-        nav = GetComponent <NavMeshAgent> ();
+		nav = GetComponent <UnityEngine.AI.NavMeshAgent> ();
 		playerSpotted = false;
 		anim = GetComponent<Animator> ();
 		walking = false;
@@ -44,7 +43,7 @@ public class EnemyMovement : MonoBehaviour
 				// running makes you more noticeable (louder)
 				string running = player.GetComponent<PlayerMovement> ().run;
 				bool playerInRange = player.GetComponent<PlayerMovement> ().state == running
-					? Vector3.Distance (nav.transform.position, player.position) < (minDistance * 1.4f)
+					? Vector3.Distance (nav.transform.position, player.position) < (minDistance * 1.3f)
 					: Vector3.Distance (nav.transform.position, player.position) < minDistance;
 
 				// but if you're tiptoeing/ not moving you're fine
@@ -60,7 +59,7 @@ public class EnemyMovement : MonoBehaviour
 				if (playerSpotted && playerInRange) {
 					enemyAudio.clip = bark;
 					enemyAudio.loop = true;
-					enemyAudio.volume = 1.0f;
+					enemyAudio.volume = 0.6f;
 					if (!enemyAudio.isPlaying) enemyAudio.Play ();
 					Running (true);
 					nav.SetDestination (player.position);
@@ -73,16 +72,14 @@ public class EnemyMovement : MonoBehaviour
 				if (!anim.GetBool ("IsRunning")) {
 					enemyAudio.Stop();
 					if (!walking) {
-						dest = SpawnController.WhichRoom (player.position) == 1
-							? SpawnController.FindFreeLocationRoom1 (4f)
-							: SpawnController.FindFreeLocationRoom2 (4f);
+						dest = SpawnController.FindFreeLocationRoom1 (2f);
 						walking = true;
 					}
 
 					nav.SetDestination (dest);
 					CasuallyWalking ();
 
-					if (Vector3.Distance (dest, nav.transform.position) < 1f) {
+					if (Vector3.Distance (dest, nav.transform.position) < 2f) {
 						walking = false;
 					}
 				}

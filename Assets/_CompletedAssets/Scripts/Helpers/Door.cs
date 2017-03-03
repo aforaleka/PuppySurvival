@@ -4,9 +4,11 @@ using System.Collections;
 public class Door : MonoBehaviour {
 
 	bool hasKey;
+	Animator anim;
 
 	void Start () {
 		hasKey = false;
+		anim = GetComponent <Animator> ();
 	}
 		
 	void Update () {
@@ -18,16 +20,14 @@ public class Door : MonoBehaviour {
 		if (other.gameObject.tag == "Player")
 		{
 			if (hasKey) {
-				Debug.Log ("hi");
 				gameObject.GetComponent<BoxCollider> ().isTrigger = true;
+				anim.SetBool ("open", true);
 				KeyCount.count -= 1;
-				ScoreManager.score += 1000;
+				ScoreManager.score += 2000;
+				WinManager.win = true;
 			}
 		}
-		else
-		{
-			//Destroy (other.gameObject);
-			//gameObject.GetComponent<BoxCollider> ().isTrigger = false;
-		}
 	}
+
+
 }

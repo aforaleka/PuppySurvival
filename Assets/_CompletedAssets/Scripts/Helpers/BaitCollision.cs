@@ -14,21 +14,20 @@ public class BaitCollision : MonoBehaviour {
 		baitRenderer = GetComponent<MeshRenderer> ();
 	}
 		
-	void Update () {
-		transform.Rotate(Vector3.forward, 3f);
+	void FixedUpdate () {
+		transform.Rotate(Vector3.forward * Time.fixedDeltaTime, 3f);
 	}
 
 	internal void OnTriggerEnter (Collider other) {
 		if (other.gameObject.tag == "Player") {
+			BaitCount.count += 1;
 			audio.PlayOneShot (getItem, 1);
 			baitRenderer.enabled = false;
-			Destroy (gameObject, getItem.length);
 			ScoreManager.score += 50;
-			BaitCount.count += 1;
+			Destroy (gameObject, getItem.length);
+
 		} else if (other.gameObject.tag != "Enemy") {
-			Vector3 dest = SpawnController.WhichRoom (transform.position) == 1
-				? SpawnController.FindFreeLocationRoom1 (5f)
-				: SpawnController.FindFreeLocationRoom2 (5f);
+			Vector3 dest = SpawnController.FindFreeLocationRoom1 (5f);
 			transform.position = dest;
 		}
 	}

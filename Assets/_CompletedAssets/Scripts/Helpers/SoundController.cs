@@ -16,6 +16,5 @@ public class SoundController : MonoBehaviour {
 	internal static void playKeyGetAudio()
 	{
 		audio.PlayOneShot (getItem, 1);
-		Debug.Log ("played");
 	}
 }

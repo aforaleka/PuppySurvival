@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class keyCollision : MonoBehaviour {
+public class KeyCollision : MonoBehaviour {
 
 	public AudioClip getItem;
 	float clipDuration;
@@ -23,9 +23,12 @@ public class keyCollision : MonoBehaviour {
 			KeyCount.count += 1;
 			audio.PlayOneShot (getItem, 1);
 			keyRenderer.enabled = false;
-			ScoreManager.score += 100;
+			ScoreManager.score += 500;
 			Destroy(gameObject, getItem.length);
 
+		} else if (other.gameObject.tag != "Enemy") {
+			Vector3 dest = SpawnController.FindFreeLocationRoom1 (5f);
+			transform.position = dest;
 		}
 	}
 }

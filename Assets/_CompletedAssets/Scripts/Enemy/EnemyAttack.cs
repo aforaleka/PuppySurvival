@@ -13,7 +13,7 @@ public class EnemyAttack : MonoBehaviour
     float timer;                                // Timer for counting up to the next attack.
 	internal static bool isEating;
 
-	NavMeshAgent nav;               // Reference to the nav mesh agent.
+	UnityEngine.AI.NavMeshAgent nav;               // Reference to the nav mesh agent.
 
 	public AudioClip eating; 
 	public AudioClip attack; 
@@ -27,8 +27,9 @@ public class EnemyAttack : MonoBehaviour
         anim = GetComponent <Animator> ();
 		isEating = false;
 		anim.SetBool ("IsEating", false);
-		nav = GetComponent <NavMeshAgent> ();
+		nav = GetComponent <UnityEngine.AI.NavMeshAgent> ();
 		enemyAudio = GetComponent<AudioSource> ();
+		timer = timeBetweenAttacks;
     }
 
     void OnTriggerEnter (Collider other)
@@ -52,17 +53,13 @@ public class EnemyAttack : MonoBehaviour
 		if (timer >= timeBetweenAttacks) {
 			if (nav.enabled) nav.Resume ();
 			isEating = false;
+			anim.SetBool ("Attack", false);
 			anim.SetBool ("IsEating", false);
 
 			if (playerInRange) {
 				Attack (isEating);
 			}
 		}
-			
-		if (playerHealth.currentHealth <= 0)
-        {
-            anim.SetTrigger ("PlayerDead");
-        }
     }
 
 
@@ -73,17 +70,22 @@ public class EnemyAttack : MonoBehaviour
 			if (BaitCount.count > 0) {
 				enemyAudio.clip = eating;
 				enemyAudio.volume = 0.5f;
+				enemyAudio.loop = false;
 				enemyAudio.Play ();
 				BaitCount.count -= 1;
+				ScoreManager.score += 20;
 				isEating = true;
 				anim.SetBool ("IsWalking", false);
 				anim.SetBool ("IsRunning", false);
 				anim.SetBool ("IsEating", true);
 				nav.Stop ();
+
 			} else if (playerHealth.currentHealth > 0) {
+				ScoreManager.score -= 20;
 				enemyAudio.clip = attack;
 				enemyAudio.PlayOneShot (attack, 1);
 				playerHealth.TakeDamage (attackDamage);
+				anim.SetBool ("Attack", true);
 				nav.Stop ();
 			}
 		}

@@ -56,14 +56,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 403452}
   - 95: {fileID: 9549978}
-  - 54: {fileID: 5442234}
-  - 114: {fileID: 11426906}
-  - 114: {fileID: 114000012848919542}
-  - 114: {fileID: 114000011768287330}
-  - 195: {fileID: 195000014242463610}
-  - 136: {fileID: 136000012635838604}
-  - 135: {fileID: 135000012118943748}
-  - 82: {fileID: 82000010344369168}
+  - 54: {fileID: 54000010771412426}
+  - 114: {fileID: 114000010660556608}
+  - 114: {fileID: 114000012515066368}
+  - 195: {fileID: 195000011688591514}
+  - 136: {fileID: 136000013519779146}
+  - 135: {fileID: 135000014002051724}
+  - 82: {fileID: 82000011819832038}
   m_Layer: 0
   m_Name: Malamute
   m_TagString: Untagged
@@ -764,21 +763,6 @@ Transform:
   - {fileID: 440434}
   m_Father: {fileID: 461374}
   m_RootOrder: 0
---- !u!54 &5442234
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110986}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!95 &9549978
 Animator:
   serializedVersion: 3
@@ -796,19 +780,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11426906
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110986}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 012df26e1148bef40ae82791a71b43df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 9500000, guid: b1ded051ea4782c42a67c661647eb553, type: 3}
-  rbody: {fileID: 5442234}
 --- !u!114 &11475098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -900,7 +871,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 110986}
   m_IsPrefabParent: 1
---- !u!82 &82000010344369168
+--- !u!54 &54000010771412426
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110986}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: Infinity
+  m_AngularDrag: Infinity
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!82 &82000011819832038
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -908,19 +894,18 @@ AudioSource:
   m_GameObject: {fileID: 110986}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 8434b04884c414ac6b468e10945685e6,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.9
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 2
+  MaxDistance: 4
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -946,7 +931,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -975,20 +960,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114000011768287330
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ea9a6ed18654d14db02bf0076cfe488, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDistance: 6
-  bark: {fileID: 0}
---- !u!114 &114000012848919542
+--- !u!114 &114000010660556608
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -999,9 +971,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28e8f7dbbe7494a8d67b6f5f3636bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenAttacks: 20
-  attackDamage: 20
---- !u!135 &135000012118943748
+  timeBetweenAttacks: 10
+  attackDamage: 40
+  eating: {fileID: 8300000, guid: 964a604f3e9874dddadc16cc8f8f7d5a, type: 3}
+  attack: {fileID: 8300000, guid: bec0f3187c24848349eefea8753813c4, type: 3}
+--- !u!114 &114000012515066368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea9a6ed18654d14db02bf0076cfe488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDistance: 5
+  bark: {fileID: 8300000, guid: 69f734645f3f84e8791a16683958b343, type: 3}
+--- !u!135 &135000014002051724
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1011,9 +998,9 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136000012635838604
+--- !u!136 &136000013519779146
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1022,27 +1009,27 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 3
+  m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &195000014242463610
+--- !u!195 &195000011688591514
 NavMeshAgent:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110986}
   m_Enabled: 1
-  m_Radius: 1
+  m_Radius: 1.5
   m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4

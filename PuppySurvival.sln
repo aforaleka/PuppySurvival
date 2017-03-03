@@ -1,9 +1,9 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{AC0C8AC1-10CB-35E0-3208-2EBAC86E6AFE}") = "PuppySurvival", "Assembly-CSharp.csproj", "{FE767462-F870-08E2-1A1B-29C0706BA6D1}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuppySurvival", "Assembly-CSharp.csproj", "{FE767462-F870-08E2-1A1B-29C0706BA6D1}"
 EndProject
-Project("{AC0C8AC1-10CB-35E0-3208-2EBAC86E6AFE}") = "PuppySurvival", "Assembly-CSharp-Editor.csproj", "{5F92D492-FB17-FC87-ADB4-CE6EDC145078}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuppySurvival", "Assembly-CSharp-Editor.csproj", "{5F92D492-FB17-FC87-ADB4-CE6EDC145078}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
