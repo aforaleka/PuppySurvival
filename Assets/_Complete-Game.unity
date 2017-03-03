@@ -6854,7 +6854,7 @@ MonoBehaviour:
   prevCount: 0
   countText: {fileID: 1126582877}
   flashSpeed: 5
-  flashColourRed: {r: 0.9117647, g: 0.34191176, b: 0.565923, a: 1}
+  flashColourRed: {r: 0.9117647, g: 0.36202422, b: 0.5781292, a: 1}
   flashColourGreen: {r: 0.5916836, g: 1, b: 0.5147059, a: 1}
   timer: 0
   timeInBetween: 0.5
